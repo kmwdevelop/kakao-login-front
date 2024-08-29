@@ -16,9 +16,11 @@ const onclickLogin = () => {
   // axios.get("http://localhost:3000/kakao/login").then((res) => {
   //   console.log(res);
   // });
-  axios.get("http://localhost:5174/kakaoLogin").then((res) => {
-    console.log(res);
-  });
+  // axios.get("http://localhost:5174/kakaoLogin").then((res) => {
+  //   console.log(res);
+  // });
+
+  window.location.href = "http://localhost:5174/kakaoLogin";
 };
 
 export default KakaoLoginPage;

@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // BrowserRouter 사용
+import "./App.css";
+import SuccessPage from "./success/success";
+import KakaoLoginPage from "./kakao/kakao-login";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Routes>
+        {/* 기본 경로를 KakaoLoginPage 컴포넌트로 설정 */}
+        <Route path="/" element={<KakaoLoginPage />} />
+        <Route path="/kakaoLogin" element={<KakaoLoginPage />} />
+        <Route path="/success" element={<SuccessPage />} />
+        {/* 잘못된 URL 입력 시 KakaoLoginPage로 리디렉션 */}
+        <Route path="*" element={<KakaoLoginPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
